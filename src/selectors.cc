@@ -430,8 +430,13 @@ select_to_reverse(const Context& context, const Selection& selection,
             return {};
     }
     while (--count > 0);
-
-    return utf8_range(begin, inclusive ? end : end+1);
+    
+    auto range = utf8_range(begin, inclusive ? end : end+1);
+    if(buffer.is_end(range.cursor())){
+        return {};
+    } else {
+        return range;
+    }
 }
 
 Optional<Selection>
