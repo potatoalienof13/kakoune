@@ -439,7 +439,7 @@ select_to_reverse(const Context& context, const Selection& selection,
             return {};
     }
     while (--count > 0);
-    
+
     return utf8_range(begin, inclusive ? end : end+1);
 }
 
